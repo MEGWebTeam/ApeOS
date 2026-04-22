@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --color-black: #0a0a0a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a.inline-block, a[class*="inline-block"] {
+  text-align: center;
+}
+
+@layer utilities {
+  @keyframes lpFloatY {
+    0%   { transform: translateY(0px);  box-shadow: rgba(255,191,0,0.2) 0px 4px 20px, rgba(78,197,220,0.08) 0px 0px 40px; }
+    45%  { transform: translateY(-7px); box-shadow: rgba(255,191,0,0.35) 0px 14px 32px, rgba(78,197,220,0.14) 0px 0px 60px; }
+    100% { transform: translateY(0px);  box-shadow: rgba(255,191,0,0.2) 0px 4px 20px, rgba(78,197,220,0.08) 0px 0px 40px; }
+  }
+
+  @keyframes lpScrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+    50% { transform: translateX(-50%) translateY(8px); opacity: 0.2; }
+  }
+
+  .footer-tooltip-wrap {
+    position: relative;
+    display: inline-block;
+  }
+
+  .footer-tooltip-wrap::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 100;
+  }
+
+  .footer-tooltip-wrap:hover::after {
+    opacity: 1;
+  }
+}

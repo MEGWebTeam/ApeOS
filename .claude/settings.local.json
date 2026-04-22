@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(echo \"Started PID $!\")",
+      "Bash(curl -s http://localhost:3000/)",
+      "Read(//tmp/**)",
+      "Bash(node *)"
+    ]
+  }
+}
